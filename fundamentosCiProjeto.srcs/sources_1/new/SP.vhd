@@ -23,6 +23,12 @@ architecture Behavioral of SP is
  signal X2paralelo : std_logic_vector(7 downto 0) := (others => '0');
   
 begin
+
+filtro2: entity work.filtro(
+    X1paralelo => X1paralelo,
+    X2paralelo => X2paralelo
+);
+
  process(clk)
   begin
     if rising_edge(clk) then    

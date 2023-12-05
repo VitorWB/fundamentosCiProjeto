@@ -8,3 +8,8 @@
 *.bat
 *.wdf
 *.xml
+*.exe
+*.type
+*.xpr
+*.wdb
+*.html

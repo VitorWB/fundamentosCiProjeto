@@ -10,12 +10,13 @@ end teste;
 architecture Behavioral of teste is
 
   signal clk, entrada, rst : std_logic := '0';
+  signal entradaH : std_logic := '0';
   constant clk_period : time := 1 ns;
   
 begin
 
     SP2 : entity work.SP port map(clk, entrada, rst);
-    --filtro1 : entity work.filtro port map(clk);
+    SPH2 : entity work.SPH port map(clk, entradaH, rst);
 
   process
   begin
@@ -28,7 +29,7 @@ begin
   process
   begin
     wait for 5 * clk_period;
-    entrada <= '1';  -- Altera o valor de entrada ap�s 5 pulsos do clock
+    entrada <= '1';  -- Altera o valor de entrada após 5 pulsos do clock
     wait for clk_period;
     entrada <= '1';
     wait for clk_period;
@@ -62,6 +63,50 @@ begin
     entrada <= '0';
     wait for clk_period;
     entrada <= '0';
+    wait;
+  end process;
+  
+  
+  -- entrada de H
+  
+  
+    process
+  begin
+    wait for 5 * clk_period;
+      entradaH <= '1';  -- Altera o valor de entrada após 5 pulsos do clock
+      wait for clk_period;
+      entradaH <= '1';
+      wait for clk_period;
+      entradaH <= '0';  
+      wait for clk_period;
+      entradaH <= '1';
+      wait for clk_period;
+      entradaH <= '0';
+      wait for clk_period;
+      entradaH <= '0';
+      wait for clk_period;
+      entradaH <= '0';
+      wait for clk_period;
+      entradaH <= '0';
+      wait for clk_period;
+      entradaH <= '0';
+      
+      wait for clk_period;
+      entradaH <= '0';
+      wait for clk_period;
+      entradaH <= '1';  
+      wait for clk_period;
+      entradaH <= '1';
+      wait for clk_period;
+      entradaH <= '0';
+      wait for clk_period;
+      entradaH <= '0';
+      wait for clk_period;
+      entradaH <= '0';
+      wait for clk_period;
+      entradaH <= '0';
+      wait for clk_period;
+      entradaH <= '0';
     wait;
   end process;
 

@@ -28,38 +28,38 @@ begin
   process
   begin
     wait for 5 * clk_period;
-    entrada <= '1';  -- Altera o valor de entrada apÃ³s 5 pulsos do clock
+    entrada <= '1';  -- Altera o valor de entrada após 5 pulsos do clock
     wait for clk_period;
-    entrada <= '0';
+    entrada <= '1';
     wait for clk_period;
     entrada <= '0';  
     wait for clk_period;
-    entrada <= '0';
-    wait for clk_period;
-    entrada <= '0';
-    wait for clk_period;
-    entrada <= '0';
-    wait for clk_period;
     entrada <= '1';
     wait for clk_period;
     entrada <= '0';
     wait for clk_period;
-    entrada <= '1';
+    entrada <= '0';
+    wait for clk_period;
+    entrada <= '0';
+    wait for clk_period;
+    entrada <= '0';
+    wait for clk_period;
+    entrada <= '0';
     
     wait for clk_period;
     entrada <= '0';
     wait for clk_period;
-    entrada <= '0';  
-    wait for clk_period;
-    entrada <= '0';
-    wait for clk_period;
-    entrada <= '0';
-    wait for clk_period;
-    entrada <= '0';
+    entrada <= '1';  
     wait for clk_period;
     entrada <= '1';
     wait for clk_period;
-    entrada <= '1';
+    entrada <= '0';
+    wait for clk_period;
+    entrada <= '0';
+    wait for clk_period;
+    entrada <= '0';
+    wait for clk_period;
+    entrada <= '0';
     wait for clk_period;
     entrada <= '0';
     wait;

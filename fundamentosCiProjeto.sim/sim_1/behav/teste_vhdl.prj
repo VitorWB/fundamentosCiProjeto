@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  "../../../fundamentosCiProjeto.srcs/sources_1/new/SP.vhd"
+vhdl xil_defaultlib  "../../../fundamentosCiProjeto.srcs/sources_1/new/filtro.vhd"
+vhdl xil_defaultlib  "../../../fundamentosCiProjeto.srcs/sim_1/new/teste.vhd"
+
+# Do not sort compile order
+nosort

@@ -7,9 +7,9 @@ library work;
 entity SP is
 Port ( 
     clk : in std_logic;
-    entrada : in std_logic;
-    X1paralelo : out std_logic_vector(7 downto 0);
-    X2paralelo : out std_logic_vector(7 downto 0)
+    entrada : in std_logic
+    --X1paralelo : out std_logic_vector(7 downto 0);
+    --X2paralelo : out std_logic_vector(7 downto 0)
   );
 end SP;
 
@@ -18,12 +18,11 @@ architecture Behavioral of SP is
  signal primeira_vez_alto : std_logic := '0';
  signal contx1 : natural := 0; 
  signal contx2 : natural := 0; 
+ 
+ signal X1paralelo : std_logic_vector(7 downto 0) := (others => '0');
+ signal X2paralelo : std_logic_vector(7 downto 0) := (others => '0');
   
 begin
-
-    X1paralelo <= (others => '0');
-    X2paralelo <= (others => '0');
-
  process(clk)
   begin
     if rising_edge(clk) then    

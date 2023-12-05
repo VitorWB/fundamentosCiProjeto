@@ -21,6 +21,8 @@ architecture Behavioral of SP is
   
 begin
 
+    filtro1 : entity work.filtro port map(clk, X1paralelo, X2paralelo);
+
  process(clk)
   begin  
     if rising_edge(clk) then    
@@ -43,9 +45,6 @@ begin
     
     
   end process;
-  
-  filtro1 : entity work.filtro port map(clk, X1paralelo, X2paralelo);
-
 
 
 end Behavioral;

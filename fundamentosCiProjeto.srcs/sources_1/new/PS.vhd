@@ -14,15 +14,31 @@ end PS;
 
 architecture Behavioral of PS is
 
-signal saida1: std_logic_vector(7 downto 0);
-signal saida2: std_logic_vector(7 downto 0);
+signal saidaLogica: std_logic_vector(15 downto 0) := (others => '0');
+signal saidaPronta: std_logic := '0';
+signal saida: std_logic := '0';
+signal cont : natural := 15; 
 
 begin
 
+    process
+        begin
+        wait for 18 ns;
+        saidaLogica <= Y1 & Y2;
+        saidaPronta <= '1';
+    end process;
+    
     process(clk)
         begin
-            saida1 <= Y1;
-            saida2 <= Y2;
-        end process;
+        if rising_edge(clk) then
+            if saidaPronta = '1' then
+                if cont >= 0 then
+                    saida <= saidaLogica(cont);
+                    cont <= cont - 1;
+                end if;
+            end if;
+        end if;
+    end process;
+        
 
 end Behavioral;

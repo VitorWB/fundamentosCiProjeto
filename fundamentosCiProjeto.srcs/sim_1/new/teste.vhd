@@ -9,12 +9,12 @@ end teste;
 
 architecture Behavioral of teste is
 
-  signal clk, entrada : std_logic := '0';
+  signal clk, entrada, rst : std_logic := '0';
   constant clk_period : time := 1 ns;
   
 begin
 
-    SP2 : entity work.SP port map(clk, entrada);
+    SP2 : entity work.SP port map(clk, entrada, rst);
     --filtro1 : entity work.filtro port map(clk);
 
   process
@@ -28,7 +28,7 @@ begin
   process
   begin
     wait for 5 * clk_period;
-    entrada <= '1';  -- Altera o valor de entrada apÃ³s 5 pulsos do clock
+    entrada <= '1';  -- Altera o valor de entrada após 5 pulsos do clock
     wait for clk_period;
     entrada <= '1';
     wait for clk_period;

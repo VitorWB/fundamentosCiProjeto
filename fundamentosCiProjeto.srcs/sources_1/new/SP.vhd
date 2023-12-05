@@ -7,7 +7,8 @@ library work;
 entity SP is
 Port ( 
     clk : in std_logic;
-    entrada : in std_logic
+    entrada : in std_logic;
+    rst : in std_logic
   );
 end SP;
 
@@ -21,7 +22,7 @@ architecture Behavioral of SP is
   
 begin
 
-    filtro1 : entity work.filtro port map(clk, X1paralelo, X2paralelo);
+    filtro1 : entity work.filtro port map(clk, X1paralelo, X2paralelo, rst);
 
  process(clk)
   begin  

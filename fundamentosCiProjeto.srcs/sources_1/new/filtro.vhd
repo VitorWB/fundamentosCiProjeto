@@ -8,7 +8,8 @@ entity filtro is
   Port ( 
     clk : in std_logic;
     X1paralelo : in std_logic_vector(7 downto 0);
-    X2paralelo : in std_logic_vector(7 downto 0)
+    X2paralelo : in std_logic_vector(7 downto 0);
+    rst : in std_logic
   );
 end filtro;
 
@@ -30,14 +31,22 @@ architecture Behavioral of filtro is
 begin
     PS1 : entity work.PS port map(clk, Y1, Y2);
 
-    process(clk)
+    process(clk, rst)
         begin
+            if rst = '1' then
+                a11 <= "00000000";
+                a12 <= "00000000";
+                a21 <= "00000000";
+                a22 <= "00000000";
+            end if;
+        
             Y1SemRaiz <= a11 * X1paralelo + a12 * X2paralelo;
             Y2SemRaiz <= a21 * X1paralelo + a22 * X2paralelo;
             Y1ComRaiz <= Y1SemRaiz * um_sobre_raiz_de_2;
             Y2ComRaiz <= Y2SemRaiz * um_sobre_raiz_de_2;
             Y1 <= Y1ComRaiz(23 downto 16);
             Y2 <= Y2ComRaiz(23 downto 16);
+            
         end process;
 
 end Behavioral;

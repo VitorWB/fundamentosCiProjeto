@@ -6,3 +6,6 @@
 *.runs/
 *.srcs/
 *.hw/
+*.bat
+*.wdf
+*.xml

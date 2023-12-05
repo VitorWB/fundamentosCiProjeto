@@ -15,16 +15,11 @@ architecture Behavioral of SP is
 
  signal primeira_vez_alto : std_logic := '0';
  signal contx1 : natural := 0; 
- signal contx2 : natural := 0; 
- 
- signal gambiarra : std_logic := '0';
- 
+ signal contx2 : natural := 0;  
  signal X1paralelo : std_logic_vector(7 downto 0) := (others => '0');
  signal X2paralelo : std_logic_vector(7 downto 0) := (others => '0');
   
 begin
-
-    filtro1 : entity work.filtro port map(X1paralelo, X2paralelo);
 
  process(clk)
   begin  
@@ -48,6 +43,9 @@ begin
     
     
   end process;
+  
+  filtro1 : entity work.filtro port map(clk, X1paralelo, X2paralelo);
+
 
 
 end Behavioral;

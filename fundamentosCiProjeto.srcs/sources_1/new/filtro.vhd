@@ -8,13 +8,12 @@ entity filtro is
   Port (
     clk : in std_logic;
     X1paralelo : in std_logic_vector(7 downto 0);
-    X2paralelo : in std_logic_vector(7 downto 0);
-    Resultado : out std_logic_vector(15 downto 0)
+    X2paralelo : in std_logic_vector(7 downto 0)
   );
 end filtro;
 
 architecture Behavioral of filtro is
-
+  signal Resultado: std_logic_vector(15 downto 0):= "0000000000000000";
   signal a11 : std_logic_vector(7 downto 0) := "00000001"; -- Coeficiente a11
   signal a12 : std_logic_vector(7 downto 0) := "00000010"; -- Coeficiente a12
   signal a21 : std_logic_vector(7 downto 0) := "00000011"; -- Coeficiente a21

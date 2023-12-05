@@ -14,8 +14,8 @@ architecture Behavioral of teste is
   
 begin
 
-    --filtro1 : entity work.filtro port map(clk, entrada);
     SP2 : entity work.SP port map(clk, entrada);
+    --filtro1 : entity work.filtro port map(clk);
 
   process
   begin
@@ -28,7 +28,7 @@ begin
   process
   begin
     wait for 5 * clk_period;
-    entrada <= '1';  -- Altera o valor de entrada após 5 pulsos do clock
+    entrada <= '1';  -- Altera o valor de entrada apÃ³s 5 pulsos do clock
     wait for clk_period;
     entrada <= '1';
     wait for clk_period;

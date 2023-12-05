@@ -8,8 +8,6 @@ entity SP is
 Port ( 
     clk : in std_logic;
     entrada : in std_logic
-    --X1paralelo : out std_logic_vector(7 downto 0);
-    --X2paralelo : out std_logic_vector(7 downto 0)
   );
 end SP;
 
@@ -19,18 +17,17 @@ architecture Behavioral of SP is
  signal contx1 : natural := 0; 
  signal contx2 : natural := 0; 
  
+ signal gambiarra : std_logic := '0';
+ 
  signal X1paralelo : std_logic_vector(7 downto 0) := (others => '0');
  signal X2paralelo : std_logic_vector(7 downto 0) := (others => '0');
   
 begin
 
-filtro2: entity work.filtro(
-    X1paralelo => X1paralelo,
-    X2paralelo => X2paralelo
-);
+    filtro1 : entity work.filtro port map(X1paralelo, X2paralelo);
 
  process(clk)
-  begin
+  begin  
     if rising_edge(clk) then    
         if entrada = '1' and primeira_vez_alto = '0' then
             primeira_vez_alto <= '1';  -- Sinal "entrada" ficou alto pela primeira vez
@@ -48,6 +45,8 @@ filtro2: entity work.filtro(
             contx1 <= contx1 + 1;         
         end if;
     end if;
+    
+    
   end process;
 
 
